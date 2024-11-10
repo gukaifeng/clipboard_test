@@ -5,17 +5,26 @@ import 'package:collection/collection.dart';
 import 'dart:typed_data';
 import 'dart:convert';
 import 'package:flutter/rendering.dart';
+import 'package:bitsdojo_window/bitsdojo_window.dart';
+
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const ClipboardTest());
+  doWhenWindowReady(() {
+    final win = appWindow;
+    const initialSize = Size(700, 1000);
+    win.minSize = initialSize;
+    win.size = initialSize;
+    win.alignment = Alignment.center;
+    win.title = "Clipboard Test";
+    win.show();
+  });
 }
 
 const formatCustom = CustomValueFormat<Uint8List>(
   applicationId: "com.superlist.clipboard.Example.CustomType",
 );
-
-const _notAvailableMessage =
-    'Clipboard is not available on this platform. Use ClipboardEvents API instead.';
 
 class ClipboardTest extends StatelessWidget {
   const ClipboardTest({super.key});
