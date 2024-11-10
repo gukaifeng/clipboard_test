@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
     floatingActionButton: FloatingActionButton(
         onPressed: _paste,
-        tooltip: '读取剪贴板',
+        tooltip: 'Read Clipboard',
         backgroundColor: const Color.fromARGB(255, 243, 243, 243),
         child: const Icon(Icons.paste),
       ),
