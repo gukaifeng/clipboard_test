@@ -17,7 +17,7 @@ void main() {
     win.minSize = initialSize;
     win.size = initialSize;
     win.alignment = Alignment.center;
-    win.title = "Clipboard Test";
+    win.title = "剪贴板测试程序 - 代码小风";
     win.show();
   });
 }
@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
   var contentWidgets = <Widget>[
-    const Text("no content")
+    const  Text("没有内容")
   ];
 
   void _paste() async {
@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(
+        // appBar: AppBar(1
         //   // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         //   title: Text(widget.title),
         // ),
@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
     floatingActionButton: FloatingActionButton(
         onPressed: _paste,
-        tooltip: 'Read Clipboard',
+        tooltip: '读取剪贴板',
         backgroundColor: const Color.fromARGB(255, 243, 243, 243),
         child: const Icon(Icons.paste),
       ),
@@ -233,8 +233,8 @@ Future<Widget> _buildWidgetForReader(
   }).toList(growable: false);
 
   return _ReaderWidget(
-    itemName: 'Data item $index',
-    suggestedFileName: reader.suggestedName ?? 'null',
+    itemName: '数据项 $index',
+    suggestedFileName: reader.suggestedName ?? '无',
     representations: children,
     nativeFormats: nativeFormats,
   );
@@ -308,7 +308,7 @@ class _HeaderWidget extends StatelessWidget {
           ),
           const SizedBox(width: 14),
           Flexible(
-            child: Text('(Suggested file name: $suggestedFileName)',
+            child: Text('(名字: $suggestedFileName)',
                 style: TextStyle(
                   fontSize: 11,
                   color: Colors.grey.shade600,
@@ -335,7 +335,7 @@ class _FooterWidget extends StatelessWidget {
         TextSpan(
           children: [
             const TextSpan(
-              text: 'Native formats: ',
+              text: '格式信息: ',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             TextSpan(text: formats),
@@ -423,7 +423,7 @@ Future<_RepresentationWidget?> _widgetForFormat(
         final sanitized = text.replaceAll(RegExp('\r[\n]?'), '\n');
         return _RepresentationWidget(
           format: format,
-          name: 'Plain Text',
+          name: '纯文本',
           synthesized: reader.isSynthesized(format),
           virtual: reader.isVirtual(format),
           content: Text(sanitized),
@@ -453,7 +453,7 @@ Future<_RepresentationWidget?> _widgetForFormat(
       } else {
         return _RepresentationWidget(
           format: format,
-          name: 'HTML Text',
+          name: 'HTML 代码',
           synthesized: reader.isSynthesized(format),
           virtual: reader.isVirtual(format),
           content: Text(html),
@@ -481,7 +481,7 @@ Future<_RepresentationWidget?> _widgetForFormat(
       if (fileUri != null) {
         return _RepresentationWidget(
           format: Formats.fileUri,
-          name: 'File URI',
+          name: '路径',
           synthesized: reader.isSynthesized(format),
           virtual: reader.isVirtual(format),
           content: Text(fileUri.toString()),
